@@ -1,0 +1,16 @@
+.main{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.sidebar{
+    flex: 20%;
+    padding: 0;
+}
+
+.content{
+    flex: 80%;
+    padding: 0;
+}
