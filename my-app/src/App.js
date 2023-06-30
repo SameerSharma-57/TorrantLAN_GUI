@@ -14,14 +14,19 @@ function App() {
   return (
     <>
       <BRouter>
-        <Navbar />
-        
+      <div className="wrapper">
 
-        <Routes>
-          <Route path="about" exact Component={About}/>
+          <Navbar />
           
-          <Route path="/*" element={<Home/>} />
-        </Routes>
+          <div className="content">
+
+            <Routes>
+              <Route path="about" exact Component={About}/>
+              
+              <Route path="/*" element={<Home/>} />
+            </Routes>
+          </div>
+      </div>
       </BRouter>
     </>
   );

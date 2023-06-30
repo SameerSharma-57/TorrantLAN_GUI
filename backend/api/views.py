@@ -4,8 +4,10 @@ from rest_framework.decorators import api_view
 from .functions.folderList import folderList
 from django.http import HttpResponse
 import json
+import sys
 
-
+sys.path.insert(0,'./api/TorrentLAN')
+from .TorrentLAN import main
 root_dir="D:/web_dev_projects/react_project/backend"
 
 # Create your views here.
@@ -45,5 +47,12 @@ def getFolderList(request,dir):
     
 
     return HttpResponse(json.dumps(dic))
+
+
+@api_view(['GET'])
+def getFolderListAtDepth(request,depth):
+    dic=main.rows_at_depth(depth=depth)
+    print(dic)
+    return HttpResponse("Hi")
 
     

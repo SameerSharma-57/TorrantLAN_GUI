@@ -5,11 +5,12 @@ import {useDropzone} from 'react-dropzone'
 import '../DragDrop/DragDropStyles.css'
 
 const MyDropzone=({setter})=> {
-  const onDrop = useCallback(acceptedFiles => {
+  const onDrop = useCallback (async acceptedFiles => {
     // Do something with the files
     if(acceptedFiles?.length){
-      setter(prevPaths=>[
-        ...prevPaths,
+      
+      await setter(prevPaths=>[
+        
         ...acceptedFiles.map(file=>file.path)
       ])
     }
@@ -19,7 +20,7 @@ const MyDropzone=({setter})=> {
 
   return (
     <div {...getRootProps({className: 'dropzone'})}>
-      <input {...getInputProps()} />
+      <input {...getInputProps()} webkitdirectory="true"/>
       {
         isDragActive ?
           <p>Drop the files here ...</p> :

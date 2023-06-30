@@ -18,7 +18,7 @@ const Home = (props) => {
       <SideBar />
       </div>
 
-      <div className="content">
+      <div className="home-content">
 
 
       <Routes>
