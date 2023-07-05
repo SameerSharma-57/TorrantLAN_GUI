@@ -1,1 +1,0 @@
-Setting best timeout for best user experience
