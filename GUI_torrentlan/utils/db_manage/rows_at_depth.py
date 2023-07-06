@@ -46,7 +46,7 @@ def rows_at_depth(depth, folder_name=None):
 
             if result:
                 if depth == 0:
-                    files.add((-1, table_name, 0, None,
+                    folders.add((-1, table_name, 0, None,
                               None, None, None, None, None))
                     metadata = json.loads(result[5])
                     if table_name in Size_map:
@@ -76,7 +76,7 @@ def rows_at_depth(depth, folder_name=None):
 
                     if depth == 1 and depther==1:
                         if row_data[2] == 1:
-                            files.add((-1, row_data[1], 1, None,
+                            files.add((-2, row_data[1], 1, None,
                                         None, None, None, None, None))
                             metadata = json.loads(result[5])
                             if table_name in Size_map:
@@ -84,7 +84,7 @@ def rows_at_depth(depth, folder_name=None):
                             else:
                                 Size_map[row_data[1]] = int(metadata["Size"])
                         else:
-                            folders.add((-1, row_data[1], 0, None,
+                            folders.add((-2, row_data[1], 0, None,
                                         None, None, None, None, None))
                             metadata = json.loads(result[5])
                             if table_name in Size_map:
@@ -126,14 +126,14 @@ def rows_at_depth(depth, folder_name=None):
             metadata = {}
             metadata["Size"] = Size_map[file[1]]
             files[i] = list(file)
-            files[i][5] = metadata
+            files[i][5] = str(metadata)
             files[i] = tuple(files[i])
         
         for i, folder in enumerate(folders):
             metadata = {}
             metadata["Size"] = Size_map[folder[1]]
             folders[i] = list(folder)
-            folders[i][5] = metadata
+            folders[i][5] = str(metadata)
             folders[i] = tuple(folders[i])
 
     return files, folders
